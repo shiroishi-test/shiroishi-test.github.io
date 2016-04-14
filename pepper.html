@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<title>Pepper Controller</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- jQuery (necesssary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="libs/qimessaging/1.0/qimessaging.js"></script>
+		<script type="text/javascript" src="libs/qimessaging/1.0/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="js/control.js"></script>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/starter-template.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class= "nabvar-brand" href="#">pepper controller</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container">
+		<section class="container">
+			<h3>接続</h3>
+			<div class="row connectedState">
+				<div class="connected col-xs-9" style="color:red"><span class="connectedText">未接続</span><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12"><label>Pepper's IP</label></div>
+				<div class="col-xs-9"><input type="text" class="form-control" id="pepperIP" value="192.168.33.64" /></div>
+				<div class="col-xs-2"><button onclick="connect()" class="btn btn-primary">接続</button></div>
+			</div>
+			
+			<h3>避難警報</h3>
+			<div class="row">
+				<div class="col-xs-12"><label>警報発令</label></div>
+				<div class="col-xs-2"><button onclick="evacuationOrder()" class="btn btn-primary">発令する</button></div>
+			</div>
+
+			
+			<h3>音量</h3>
+			<div class="row">
+				<div class="col-xs-12"><label>今の音量</label></div>
+				<div class="col-xs-9"><input type="text" class="form-control" id="pepperVolume" value="waiting..." /></div>
+				<div class="col-xs-2"><button onclick="changeAudioVolume()" class="btn btn-primary">音量変更</button></div>
+			</div>
+			
+			<h3>喋らせる</h3>
+			<div class="row">
+				<div class="col-xs-12">
+					<button onclick="hello()" class="btn btn-default">Hello</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12"><label>TextMessage</label></div>
+				<div class="col-xs-9"><input type="text" class="form-control" id="sayText" /></div>
+				<div class="col-xs-2"><button onclick="say()" class="btn btn-primary">送信</button></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12"><label>AnimatedMessage</label></div>
+				<div class="col-xs-9"><input type="text" class="form-control" id="animatedSayText"/></div>
+				<div class="col-xs-2"><button onclick="animatedSay()" class="btn btn-primary">送信</button></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12"><span id="helpBlock" class="help-block">Hint: \vct=50~150\ で声の高さ　\pau=0~\ で待つ</span></div>
+			</div>
+			
+			<h3>動かす</h3>
+			<div class="row">
+				<div class="pad">
+					<div class="control top" onclick="move(2)">
+						<div class="arrow"></div>
+					</div>
+					<div class="control left" onclick="move(0)">
+						<div class="arrow"></div>
+					</div>
+					<div class="control right" onclick="move(1)">
+						<div class="arrow"></div>
+					</div>
+					<div class="control bottom" conclick="move(3)">
+						<div class="arrow"></div>
+					</div>
+					<div class="control middle"></div>
+				</div>
+			</div>
+		</section>
+		</div>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
