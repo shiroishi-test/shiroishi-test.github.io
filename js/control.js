@@ -26,7 +26,7 @@ function connect() {
 				self.showAudioVolume(val);
 			});
 		});
-		self.qims.service("ALVideoRecorder),done(function(ins) {
+		self.qims.service("ALVideoRecorder").done(function(ins) {
 			self.alVideoRecorder = ins;
 		});
 		self.qims.service("ALMemory").done(function(ins) {
@@ -131,3 +131,15 @@ function evacuationOrder() {
 	self.alMemory.raiseEvent("evacuation/order", "地震だ");
 }
 
+// 録画開始
+function startRecording() {
+	self.alVideoRecorder.setFrameRate(10.0);
+	self.alVideoRecorder.setResolution(2);
+	self.alVideoRecorder.startRecording("/home/nao/recordings/cameras", "test");
+	this.alTextToSpeech.say("録画開始");
+}
+
+function stopRecording() {
+	self.alVideoRecorder.stopRecording();
+	this.alTextToSpeech.say("録画終了");
+}
