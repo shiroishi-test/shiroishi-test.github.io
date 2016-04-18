@@ -26,6 +26,9 @@ function connect() {
 				self.showAudioVolume(val);
 			});
 		});
+		self.qims.service("ALVideoRecorder),done(function(ins) {
+			self.alVideoRecorder = ins;
+		});
 		self.qims.service("ALMemory").done(function(ins) {
 			self.alMemory = ins;
 			// メモリ監視
@@ -72,7 +75,6 @@ function changeAudioVolume() {
 function hello(){
 	console.log("hello");
 	this.alAnimatedSpeech.say("はろー");
-
 }
 
 // おしゃべりくそやろう
@@ -127,4 +129,17 @@ function move(to) {
 // 避難警報
 function evacuationOrder() {
 	self.alMemory.raiseEvent("evacuation/order", "地震だ");
+}
+
+// 録画開始
+function startRecording() {
+	self.alVideoRecorder.setFrameRate(10.0);
+	self.alVideoRecorder.setResolution(2);
+	self.alVideoRecorder.startRecording("/home/nao/recordings/cameras", "test");
+	this.alTextToSpeech.say("録画開始");
+}
+
+function stopRecording() {
+	self.alVideoRecorder.stopRecording();
+	this.alTextToSpeech.say("録画終了");
 }
